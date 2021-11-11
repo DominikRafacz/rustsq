@@ -1,9 +1,10 @@
 use crate::typedefs::*;
 use crate::constants::standard_alphabets;
+use crate::utilities::matcher;
 
 pub struct Alphabet {
     sqtype: SqType,
-    letters : Vec<Letter>,
+    letters : Vec<Letter>
 }
 
 impl Alphabet {
@@ -24,5 +25,17 @@ impl Alphabet {
             ),
             None => None
         }
+    }
+
+    pub fn matcher(&self) -> matcher::Matcher {
+        if self.is_simple() {
+            matcher::Matcher::Simple(matcher::SimpleMatcher{})
+        } else {
+            matcher::Matcher::Compound(matcher::CompoundMatcher{})
+        }
+    }
+
+    fn is_simple(&self) -> bool {
+        !self.letters.iter().any(|letter| letter.len() > 1)
     }
 }
