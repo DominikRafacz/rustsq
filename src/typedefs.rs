@@ -1,4 +1,4 @@
-pub type SimpleLetter = char;
+pub type Letter = &'static str;
 
 pub enum SqType {
     AmiExt,
