@@ -10,7 +10,7 @@ pub struct Alphabet {
 impl Alphabet {
     pub fn new(letters : Vec<Letter>) -> Alphabet {
         Alphabet {
-            sqtype: SqType::Atp,
+            sqtype : SqType::Atp,
             letters
         }
     }
@@ -28,11 +28,7 @@ impl Alphabet {
     }
 
     pub fn matcher(&self) -> matcher::Matcher {
-        if self.is_simple() {
-            matcher::Matcher::Simple(matcher::SimpleMatcher{})
-        } else {
-            matcher::Matcher::Compound(matcher::CompoundMatcher{})
-        }
+        matcher::Matcher::new(&self.letters, self.is_simple())
     }
 
     fn is_simple(&self) -> bool {
