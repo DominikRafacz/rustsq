@@ -3,6 +3,7 @@ mod alphabet;
 mod constants;
 mod utilities;
 mod proto_sequence;
+mod sequence;
 
 #[cfg(test)]
 mod tests {
@@ -10,6 +11,7 @@ mod tests {
     use crate::proto_sequence::ProtoSequence;
     use crate::typedefs::SqType;
     use crate::typedefs::SqType::AmiBsc;
+    use crate::utilities::matcher;
 
     #[test]
     fn create_alphabet_from_vector() {
