@@ -2,10 +2,13 @@ mod typedefs;
 mod alphabet;
 mod constants;
 mod utilities;
+mod proto_sequence;
 
 #[cfg(test)]
 mod tests {
     use crate::alphabet::Alphabet;
+    use crate::proto_sequence::ProtoSequence;
+    use crate::typedefs::SqType;
     use crate::typedefs::SqType::AmiBsc;
 
     #[test]
@@ -21,5 +24,10 @@ mod tests {
     #[test]
     fn get_matcher() {
         Alphabet::new(vec!["A"]).matcher();
+    }
+
+    #[test]
+    fn construct_proto_sequences() {
+        ProtoSequence::from("CATGATCGATACAGTG");
     }
 }
