@@ -1,3 +1,5 @@
+pub type Asize = u8;
+
 pub type Letter = &'static str;
 pub type SimpleLetter = char;
 
