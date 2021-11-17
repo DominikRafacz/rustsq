@@ -25,7 +25,7 @@ impl Matcher<'_> {
             let mut ind : u8 = 0;
             for letter in &vec {
                 map.insert(*letter, ind);
-                ind += 0;
+                ind += 1;
             }
 
             Matcher::Simple(SimpleMatcher {
@@ -37,7 +37,7 @@ impl Matcher<'_> {
             let mut ind : u8 = 0;
             for &letter in alph_letters {
                 map.insert(letter, ind);
-                ind += 0;
+                ind += 1;
             }
 
             Matcher::Compound(CompoundMatcher {
