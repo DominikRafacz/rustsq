@@ -1,9 +1,24 @@
+use crate::alphabet::Alphabet;
+use crate::pack;
+use crate::sequence::Sequence;
+use crate::typedefs::{ProtoSequenceData, SequenceData};
+use crate::utilities::calc;
+
 pub struct ProtoSequence {
-    data : String
+    data : ProtoSequenceData
 }
 
-impl From<String> for ProtoSequence {
-    fn from(data: String) -> Self {
+impl ProtoSequence {
+    pub(crate) fn pack(&self, alph : &Alphabet) -> Sequence {
+        let len = calc::packed_len(self.data.len(), &alph);
+        let mut seq: SequenceData = vec![0; len];
+        pack::pack(&self.data, &mut seq, &alph);
+        Sequence::from(seq)
+    }
+}
+
+impl From<ProtoSequenceData> for ProtoSequence {
+    fn from(data: ProtoSequenceData) -> Self {
         ProtoSequence {
             data
         }
