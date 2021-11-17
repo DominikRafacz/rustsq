@@ -1,5 +1,13 @@
-use crate::typedefs::ElemPacked;
+use crate::typedefs::SequenceData;
 
 pub struct Sequence {
-    data : Vec<ElemPacked>
+    data : SequenceData
+}
+
+impl From<SequenceData> for Sequence {
+    fn from(data: SequenceData) -> Self {
+        Sequence {
+            data
+        }
+    }
 }
